@@ -1,0 +1,93 @@
+{
+  "root": true,
+  "env": { "node": true },
+  "extends": ["eslint:recommended", "@vue/prettier"],
+  "parserOptions": { "ecmaVersion": 2020 },
+
+  // Find and fix JavaScript problems in the code. This rule-set is applied to
+  // typescript as well, however typescript has additional rules below. For full
+  // list of available rules see https://eslint.org/docs/rules/
+
+  "rules": {
+    "eqeqeq": 1,
+    "guard-for-in": 1,
+    "no-inner-declarations": 0,
+    "no-template-curly-in-string": 1,
+    "no-useless-concat": 1,
+    "no-useless-rename": 1,
+    "object-shorthand": 1,
+    "prefer-rest-params": 1,
+    "prefer-template": 1,
+    "yoda": 1
+  },
+  "overrides": [
+    // Rules applied to Vue SFC (Single File Components). This is handled by
+    // unique rule-set provided by a plugin. For full list of available rules
+    // see https://eslint.vuejs.org/rules/
+
+    {
+      "files": ["**/*.vue"],
+      "extends": ["plugin:vue/vue3-recommended", "eslint:recommended", "@vue/typescript/recommended", "@vue/prettier", "@vue/prettier/@typescript-eslint"],
+      "rules": {
+        "@typescript-eslint/array-type": [1, { "default": "array-simple" }],
+        "@typescript-eslint/member-ordering": 1,
+        "@typescript-eslint/no-explicit-any": 0,
+        "vue/component-name-in-template-casing": [1, "PascalCase", { "ignores": ["component", "keep-alive", "slot", "suspense", "teleport", "transition", "transition-group"], "registeredComponentsOnly": false }],
+        "vue/eqeqeq": 1,
+        "vue/html-self-closing": [1, { "html": { "void": "any" } }],
+        "vue/match-component-file-name": [1, { "extensions": ["vue"], "shouldMatchCase": true }],
+        "vue/no-boolean-default": 1,
+        "vue/no-duplicate-attr-inheritance": 1,
+        "vue/no-unused-components": [1, { "ignoreWhenBindingPresent": true }],
+        "vue/no-v-html": 0,
+        "vue/space-infix-ops": 1,
+        "vue/v-on-event-hyphenation": [1, "always", { "autofix": true }],
+        "vue/v-on-function-call": 1
+      },
+      "globals": {
+        "EventListener": "readonly",
+        "HTMLElementTagNameMap": "readonly",
+        "NodeJS": "readonly",
+        "WindowEventMap": "readonly"
+      }
+    },
+
+    // Find and fix TypeScript problems in the code. This rule-set is applied to
+    // typescript files only. For full list of available rules see
+    // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules
+
+    {
+      "files": ["**/*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "extends": ["@vue/typescript/recommended", "@vue/prettier", "@vue/prettier/@typescript-eslint"],
+      "rules": {
+        "@typescript-eslint/array-type": [1, { "default": "array-simple" }],
+        "@typescript-eslint/member-ordering": 1,
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-namespace": 0
+      }
+    },
+
+    // Allow implicit return types in files that start with the `use[A-Z]`
+    // expression. These files are intended to be composition functions (hooks),
+    // where it's fine if the function return type is inferred.
+
+    {
+      "files": ["**/use[A-Z]*.ts"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": 0
+      }
+    },
+
+    // Use module sourceType for javascript module files. These files are
+    // intended to be consumed directly by nodejs.
+
+    {
+      "files": ["**/*.mjs"],
+      "parserOptions": { "sourceType": "module" },
+      "globals": {
+        "Promise": "readonly"
+      }
+    }
+  ]
+}

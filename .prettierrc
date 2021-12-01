@@ -1,0 +1,18 @@
+{
+  "bracketSameLine": true,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": [".*rc", "*rc.json"],
+      "options": {
+        "printWidth": 256
+      }
+    },
+    {
+      "files": ["*.md"],
+      "options": {
+        "proseWrap": "always"
+      }
+    }
+  ]
+}

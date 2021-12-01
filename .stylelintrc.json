@@ -1,0 +1,28 @@
+{
+  "extends": "stylelint-config-recommended-scss",
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "selector-pseudo-class-no-unknown": [true, { "ignorePseudoClasses": ["global"] }],
+    "order/properties-alphabetical-order": true,
+    "order/order": [
+      "dollar-variables",
+      "custom-properties",
+      {
+        "type": "at-rule",
+        "name": "extend"
+      },
+      {
+        "type": "at-rule",
+        "name": "include",
+        "hasBlock": false
+      },
+      "declarations",
+      {
+        "type": "at-rule",
+        "name": "include",
+        "hasBlock": true
+      },
+      "rules"
+    ]
+  }
+}

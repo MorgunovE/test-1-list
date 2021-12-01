@@ -1,0 +1,26 @@
+@use 'sass/color';
+
+@import url('//fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color: color.$text;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 87.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// If you need to style the #app element
+// :global(#app) {}
